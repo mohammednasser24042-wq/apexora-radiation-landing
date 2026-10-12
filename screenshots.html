@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض الشاشات - نظام الرصد الإشعاعي</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <div class="logo-box">
+                <img id="brandLogo" src="logo.jpg" alt="Logo" class="logo-img">
+                <span id="brandName" class="brand-title">Apexora</span>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="screenshots.html" class="active">معرض الشاشات</a>
+                <a href="index.html#features">مميزات النظام</a>
+                <a href="index.html#about">عن المنظومة</a>
+                <a href="index.html#contact" class="btn-cta-nav whatsapp-link">استعلام</a>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main style="padding-top: 120px; min-height: 80vh;">
+        <div class="container">
+            <div class="section-title">
+                <h2>معرض شاشات نظام الرصد الإشعاعي</h2>
+                <p>استعرض واجهات التشغيل وقاعدة البيانات وتعرف على مميزات تقارير Excel لأي مدة زمنية</p>
+            </div>
+
+            <!-- Search & Filter Controls -->
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 40px;">
+                <!-- Filter Buttons -->
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <button class="btn btn-primary filter-btn active" data-filter="all" style="padding: 8px 16px; font-size: 0.9rem;">الكل</button>
+                    <button class="btn btn-outline filter-btn" data-filter="dashboard" style="padding: 8px 16px; font-size: 0.9rem;">الرئيسية</button>
+                    <button class="btn btn-outline filter-btn" data-filter="radiation" style="padding: 8px 16px; font-size: 0.9rem;">تسجيل الفحص</button>
+                    <button class="btn btn-outline filter-btn" data-filter="reports" style="padding: 8px 16px; font-size: 0.9rem;">التقارير</button>
+                    <button class="btn btn-outline filter-btn" data-filter="development" style="padding: 8px 16px; font-size: 0.9rem;">تحت الإنشاء (Excel)</button>
+                </div>
+
+                <!-- Search Input -->
+                <div style="position: relative; min-width: 280px;">
+                    <input type="text" id="searchInput" placeholder="ابحث في الشاشات..." style="width: 100%; padding: 10px 15px 10px 40px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; color: #fff; font-family: 'Cairo', sans-serif; outline: none;">
+                    <i class="fas fa-search" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                </div>
+            </div>
+
+            <!-- No Results Message -->
+            <div id="noResults" style="display: none; text-align: center; padding: 50px; color: var(--text-muted); font-size: 1.1rem;">
+                <i class="fas fa-folder-open" style="font-size: 3rem; margin-bottom: 15px; display: block; color: var(--accent-color);"></i>
+                عذراً، لم نتمكن من العثور على نتائج تطابق بحثك.
+            </div>
+
+            <!-- Screenshots Grid -->
+            <div id="screenshotsGrid" class="home-preview-grid" style="margin-bottom: 60px;">
+                <!-- Data injected dynamically -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3 id="footerBrandName">Apexora</h3>
+                    <p>نظام الرصد الإشعاعي المتكامل باستخدام Microsoft Access و VBA.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>روابط سريعة</h4>
+                    <a href="index.html">الرئيسية</a>
+                    <a href="screenshots.html">معرض الشاشات</a>
+                    <a href="index.html#contact">تواصل للاستعلام</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="image-lightbox-modal">
+        <div class="lightbox-content-wrapper">
+            <span class="lightbox-close"><i class="fas fa-times"></i></span>
+            <img id="lightboxImg" src="" alt="Zoomed Image">
+            <div id="lightboxCaption" class="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (typeof systemData !== 'undefined') {
+                if(document.getElementById('brandLogo')) document.getElementById('brandLogo').src = systemData.brand.logo;
+                if(document.getElementById('brandName')) document.getElementById('brandName').innerText = systemData.brand.name;
+                if(document.getElementById('footerBrandName')) document.getElementById('footerBrandName').innerText = systemData.brand.name;
+
+                const grid = document.getElementById('screenshotsGrid');
+                const searchInput = document.getElementById('searchInput');
+                const noResults = document.getElementById('noResults');
+                let currentFilter = 'all';
+
+                function renderScreenshots(filter = 'all', searchQuery = '') {
+                    if(!grid) return;
+                    grid.innerHTML = '';
+                    
+                    let items = systemData.screenshots;
+
+                    if (filter !== 'all') {
+                        items = items.filter(item => item.category === filter);
+                    }
+
+                    if (searchQuery.trim() !== '') {
+                        const query = searchQuery.toLowerCase();
+                        items = items.filter(item => 
+                            item.title.toLowerCase().includes(query) || 
+                            item.description.toLowerCase().includes(query)
+                        );
+                    }
+
+                    if (items.length === 0) {
+                        if(noResults) noResults.style.display = 'block';
+                        return;
+                    } else {
+                        if(noResults) noResults.style.display = 'none';
+                    }
+
+                    items.forEach(item => {
+                        const card = document.createElement('div');
+                        card.className = `screenshot-card ${item.category}`;
+                        card.innerHTML = `
+                            <div class="img-wrapper" onclick="openScreenshotLightbox('${item.fileName}', '${item.title}', '${item.description}')">
+                                <img src="${item.fileName}" alt="${item.title}" loading="lazy">
+                                <div class="zoom-overlay-icon">
+                                    <i class="fas fa-search-plus"></i>
+                                </div>
+                            </div>
+                            <div class="screenshot-info">
+                                <span class="tag-category">${item.category.toUpperCase()}</span>
+                                <h3>${item.title}</h3>
+                                <p>${item.description}</p>
+                            </div>
+                        `;
+                        grid.appendChild(card);
+                    });
+                }
+
+                renderScreenshots('all');
+
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                        e.target.classList.add('active');
+                        currentFilter = e.target.getAttribute('data-filter');
+                        renderScreenshots(currentFilter, searchInput ? searchInput.value : '');
+                    });
+                });
+
+                if(searchInput) {
+                    searchInput.addEventListener('input', (e) => {
+                        renderScreenshots(currentFilter, e.target.value);
+                    });
+                }
+            }
+
+            const modal = document.getElementById('lightboxModal');
+            const modalImg = document.getElementById('lightboxImg');
+            const modalCaption = document.getElementById('lightboxCaption');
+            const closeBtn = document.querySelector('.lightbox-close');
+
+            window.openScreenshotLightbox = function(imgSrc, imgTitle, imgDesc) {
+                if(modal && modalImg) {
+                    modal.classList.add('active');
+                    modalImg.src = imgSrc;
+                    if(modalCaption) {
+                        modalCaption.innerHTML = `<strong>${imgTitle}</strong><br><span style="font-size:0.85rem; color: var(--text-muted); font-weight:normal;">${imgDesc}</span>`;
+                    }
+                    document.body.style.overflow = 'hidden';
+                }
+            };
+
+            function closeLightboxFunc() {
+                if(modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+
+            if(closeBtn) {
+                closeBtn.addEventListener('click', closeLightboxFunc);
+            }
+            
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeLightboxFunc();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if(e.key === 'Escape') closeLightboxFunc();
+            });
+
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            if(menuToggle && navLinks) {
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

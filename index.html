@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apexora Software | نظام الرصد الإشعاعي وإدارة البيانات</title>
+    <!-- Google Fonts - Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <div class="logo-box">
+                <img id="brandLogo" src="logo.jpg" alt="Apexora Logo" class="logo-img">
+                <span id="brandName" class="brand-title">Apexora <span class="highlight">Software</span></span>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="index.html" class="active">الرئيسية</a>
+                <a href="#features">مميزات النظام</a>
+                <a href="screenshots.html">معرض الشاشات (<span id="totalCount">5</span>)</a>
+                <a href="#about">عن المنظومة</a>
+                <a href="#" class="btn-cta-nav whatsapp-link">استعلم عن نسختك</a>
+            </nav>
+
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Sidebar -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-header">
+            <div class="logo-box">
+                <img src="logo.jpg" alt="Logo" class="logo-img">
+                <span class="brand-title">Apexora</span>
+            </div>
+            <div class="close-drawer" id="closeDrawer">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="drawer-links">
+            <a href="index.html" class="active"><i class="fas fa-home"></i> الرئيسية</a>
+            <a href="#features"><i class="fas fa-star"></i> مميزات النظام</a>
+            <a href="screenshots.html"><i class="fas fa-images"></i> معرض الشاشات (5)</a>
+            <a href="#about"><i class="fas fa-info-circle"></i> عن المنظومة</a>
+            <a href="#" class="whatsapp-link mobile-cta-btn"><i class="fab fa-whatsapp"></i> تواصل للاستعلام فقط</a>
+        </div>
+    </div>
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-glow"></div>
+        <div class="container hero-content-grid">
+            <div class="hero-text-side">
+                <div class="hero-badge">
+                    <i class="fas fa-shield-radiation"></i> نظام الرصد الإشعاعي الاحترافي 2026
+                </div>
+                <h1>أنظمة أپيكسورا المتقدمة لإدارة ورصد الجرعات الإشعاعية</h1>
+                <p>منظومة برمجية هندسية مبنية باحترافية فائقة على بيئة <strong>Microsoft Access و VBA</strong>، مصممة خصيصاً لتناسب وتشمل كافة أجهزة المؤسسة أو المركز الطبي بكفاءة استثنائية، سرعة تشغيل مطلقة، واستقرار تام.</p>
+                
+                <div class="hero-buttons">
+                    <a href="screenshots.html" class="btn btn-primary">
+                        <i class="fas fa-images"></i> استعرض شاشات النظام <i class="fas fa-arrow-left"></i>
+                    </a>
+                    <a href="#" class="btn btn-outline whatsapp-link">
+                        <i class="fab fa-whatsapp"></i> استعلم عن النظام
+                    </a>
+                </div>
+
+                <div class="hero-social-links">
+                    <a href="https://www.facebook.com/share/1E2gPgjMKP/" target="_blank" title="صفحة الفيسبوك"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://youtube.com/@apexorasoftware?si=hBPKz1TIZWM-3ypt" target="_blank" title="قناة اليوتيوب"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="whatsapp-link" title="واتساب للاستعلام"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="hero-visual-side">
+                <div class="mockup-frame">
+                    <div class="mockup-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span class="mockup-title">Apexora Radiation Monitoring System</span>
+                    </div>
+                    <div class="mockup-body">
+                        <div class="mockup-glow-effect"></div>
+                        <i class="fas fa-radiation mockup-main-icon"></i>
+                        <h3>أمان ودقة فائقة</h3>
+                        <p>قواعد بيانات Access و VBA قوية تعمل بسلاسة على كافة أجهزة المنشأة دون تعقيد.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Counter Section -->
+    <section class="stats-section">
+        <div class="container stats-grid">
+            <div class="stat-box">
+                <div class="stat-icon"><i class="fas fa-database"></i></div>
+                <h3>Access & VBA</h3>
+                <p>هندسة برمجية قوية ومستقرة</p>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon"><i class="fas fa-desktop"></i></div>
+                <h3>لكل الأجهزة</h3>
+                <p>متوافق مع كافة أجهزة المنشأة</p>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon"><i class="fas fa-file-excel"></i></div>
+                <h3>تقارير Excel</h3>
+                <p>تصدير تقارير الحالات لأي مدة</p>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon"><i class="fas fa-headset"></i></div>
+                <h3>استعلام ودعم</h3>
+                <p>تواصل دائم للاستفسارات الفنية</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>لماذا تعتمد على أنظمة Apexora؟</h2>
+                <p>حلول تقنية متكاملة تضمن دقة البيانات، سهولة الاستخدام، والاعتمادية التامة داخل منشأتك</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fas fa-cogs"></i></div>
+                    <h3>مبني على Access و VBA</h3>
+                    <p>يعتمد النظام على تقنيات مايكروسفت القوية لضمان التشغيل الفوري والاعتمادية في كافة أجهزة المؤسسة.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fas fa-chart-bar"></i></div>
+                    <h3>إدارة بيانات وتقارير Excel</h3>
+                    <p>إمكانية استخراج وتصدير تقارير شاملة لحالات المرضى والجرعات الإشعاعية لأي فترة زمنية يحددها المستخدم.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
+                    <h3>حماية ونسخ احتياطي</h3>
+                    <p>أدوات متطورة لحفظ واستعادة البيانات والنسخ الاحتياطي لضمان سلامة السجلات الطبية تماماً.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fas fa-headset"></i></div>
+                    <h3>قنوات استعلام مخصصة</h3>
+                    <p>نوفر لك كافة قنوات التواصل (واتساب، فيسبوك، يوتيوب) للإجابة على استفساراتك الفنية والاستعلام عن النظام.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Preview Showcase Section -->
+    <section class="preview-showcase">
+        <div class="container">
+            <div class="section-title">
+                <h2>معرض شاشات النظام الاحترافي</h2>
+                <p>تعرف عن قرب على واجهات النظام وتفاصيل رصد الجرعات الإشعاعية (اضغط على أي صورة لتكبيرها)</p>
+            </div>
+            
+            <div id="homePreviewGrid" class="home-preview-grid">
+                <!-- تعبئة ديناميكية -->
+            </div>
+
+            <div class="center-btn-box" style="text-align: center; margin-top: 50px;">
+                <a href="screenshots.html" class="btn btn-primary">
+                    <i class="fas fa-th-large"></i> استعرض كافة شاشات النظام بالتفصيل <i class="fas fa-arrow-left"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About System Section -->
+    <section id="about" class="about-section">
+        <div class="container about-container">
+            <div class="about-text">
+                <h2>منظومة صُممت خصيصاً لراحتك ودقة عملك</h2>
+                <p>تم تطوير النظام باستخدام هندسة برمجية متطورة على قاعدة بيانات <strong>Microsoft Access</strong> ولغة <strong>VBA</strong>، مما يجعله خفيفاً وسريعاً ولا يتطلب مواصفات أجهزة معقدة، حيث يعمل بكفاءة تامة على جميع أجهزة المنشأة.</p>
+                <ul class="about-list">
+                    <li><i class="fas fa-check-circle"></i> واجهات مستخدم مدروسة بعناية لتسجيل وفحص الحالات بسرعة.</li>
+                    <li><i class="fas fa-check-circle"></i> ميزة تصدير تقارير مفصلة لحالات الإشعاع لأي مدة بصيغة Excel.</li>
+                    <li><i class="fas fa-check-circle"></i> نظام حماية ونسخ احتياطي فوري لحفظ البيانات من أي طارئ.</li>
+                </ul>
+            </div>
+            <div class="about-card-box">
+                <div class="highlight-box">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>هندسة برمجية ذكية</h3>
+                    <p>مصنوعة بأعلى معايير الجودة لتلائم متطلبات مراكز الرصد الإشعاعي والمؤسسات بدقة مطلقة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container contact-box">
+            <h2>هل لديك استفسار أو ترغب بمعرفة تفاصيل أكثر؟</h2>
+            <p>النظام مصمم خصيصاً للاستعلام والتواصل الفني المباشر مع المطور. تواصل معنا عبر القنوات التالية:</p>
+            
+            <div class="contact-social-buttons">
+                <a href="#" class="btn btn-whatsapp whatsapp-link">
+                    <i class="fab fa-whatsapp"></i> واتساب للاستعلام
+                </a>
+                <a href="https://www.facebook.com/share/1E2gPgjMKP/" target="_blank" class="btn btn-facebook">
+                    <i class="fab fa-facebook-f"></i> صفحة الفيسبوك
+                </a>
+                <a href="https://youtube.com/@apexorasoftware?si=hBPKz1TIZWM-3ypt" target="_blank" class="btn btn-youtube">
+                    <i class="fab fa-youtube"></i> قناة اليوتيوب
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Lightbox Modal -->
+    <div class="image-lightbox-modal" id="imageLightbox">
+        <div class="lightbox-content-wrapper">
+            <span class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></span>
+            <img id="lightboxImg" src="" alt="Zoomed Screenshot">
+            <div class="lightbox-caption" id="lightboxCaption">عنوان الصورة</div>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="#" class="floating-whatsapp whatsapp-link" title="تواصل للاستعلام عبر الواتساب">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer Section -->
+    <main-footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-info">
+                <h3>Apexora Software</h3>
+                <p>أنظمة إدارة الأعمال الطبية والتقنية المتقدمة باستخدام Microsoft Access و VBA.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/share/1E2gPgjMKP/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://youtube.com/@apexorasoftware?si=hBPKz1TIZWM-3ypt" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="whatsapp-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>روابط سريعة</h4>
+                <a href="index.html">الرئيسية</a>
+                <a href="#features">مميزات النظام</a>
+                <a href="screenshots.html">الشاشات</a>
+                <a href="#contact">التواصل للاستعلام</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Apexora Software. جميع الحقوق محفوظة للمطور محمد.</p>
+        </div>
+    </main-footer>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuToggle = document.getElementById('menuToggle');
+            const closeDrawer = document.getElementById('closeDrawer');
+            const mobileDrawer = document.getElementById('mobileDrawer');
+            const drawerOverlay = document.getElementById('drawerOverlay');
+
+            function toggleDrawer() {
+                mobileDrawer.classList.toggle('open');
+                drawerOverlay.classList.toggle('active');
+            }
+
+            if(menuToggle) menuToggle.addEventListener('click', toggleDrawer);
+            if(closeDrawer) closeDrawer.addEventListener('click', toggleDrawer);
+            if(drawerOverlay) drawerOverlay.addEventListener('click', toggleDrawer);
+
+            document.querySelectorAll('.drawer-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileDrawer.classList.remove('open');
+                    drawerOverlay.classList.remove('active');
+                });
+            });
+
+            // روابط الواتساب للاستعلام فقط
+            const phone = "201100107585";
+            const message = "السلام عليكم، أرغب في الاستفسار عن نظام الرصد الإشعاعي ومميزات قاعدة البيانات وتصدير تقارير Excel";
+            const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+            document.querySelectorAll('.whatsapp-link').forEach(el => {
+                el.setAttribute('href', whatsappUrl);
+                el.setAttribute('target', '_blank');
+            });
+
+            // تعبئة الشاشات في الهوم
+            if (typeof systemData !== 'undefined') {
+                const previewGrid = document.getElementById('homePreviewGrid');
+                if (previewGrid && systemData.screenshots) {
+                    systemData.screenshots.forEach(item => {
+                        const card = document.createElement('div');
+                        card.className = 'screenshot-card';
+                        card.innerHTML = `
+                            <div class="img-wrapper" onclick="openLightbox('${item.fileName}', '${item.title}')">
+                                <img src="${item.fileName}" alt="${item.title}" loading="lazy">
+                                <div class="zoom-overlay-icon"><i class="fas fa-search-plus"></i></div>
+                            </div>
+                            <div class="screenshot-info">
+                                <span class="tag-category">${item.category.toUpperCase()}</span>
+                                <h3>${item.title}</h3>
+                                <p>${item.description}</p>
+                            </div>
+                        `;
+                        previewGrid.appendChild(card);
+                    });
+                }
+            }
+
+            // Lightbox Logic
+            const lightbox = document.getElementById('imageLightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxCaption = document.getElementById('lightboxCaption');
+            const lightboxClose = document.getElementById('lightboxClose');
+
+            window.openLightbox = function(imgSrc, captionText) {
+                if(lightbox && lightboxImg) {
+                    lightboxImg.src = imgSrc;
+                    lightboxCaption.textContent = captionText || "شاشة من النظام";
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            };
+
+            function closeLightboxFunc() {
+                if(lightbox) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+
+            if(lightboxClose) lightboxClose.addEventListener('click', closeLightboxFunc);
+            if(lightbox) {
+                lightbox.addEventListener('click', (e) => {
+                    if(e.target === lightbox) closeLightboxFunc();
+                });
+            }
+            document.addEventListener('keydown', (e) => {
+                if(e.key === 'Escape') closeLightboxFunc();
+            });
+        });
+    </script>
+</body>
+</html>
