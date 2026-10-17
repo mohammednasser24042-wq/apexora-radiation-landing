@@ -10,6 +10,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- حظر القفز والنزول التلقائي فوراً قبل تحميل عناصر الصفحة -->
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        if (window.location.hash) {
+            window.history.replaceState(null, null, window.location.pathname);
+        }
+        window.scrollTo(0, 0);
+    </script>
 </head>
 <body>
 
@@ -60,8 +71,6 @@
 
     <!-- Hero Section -->
     <section class="hero-section">
-        <!-- عنصر الشعار الشفاف خلف الـ Hero مباشرة -->
-        <div class="hero-brand-bg"></div>
         <div class="hero-glow-1"></div>
         <div class="hero-glow-2"></div>
         <div class="container hero-content-grid">
@@ -290,14 +299,8 @@
     <!-- Scripts -->
     <script src="data.js"></script>
     <script>
-        // التمرير التلقائي لأعلى الصفحة فور بداية التحميل لعدم القفز
-        if ('scrollRestoration' in history) {
-            history.scrollRestoration = 'manual';
-        }
-        window.scrollTo(0, 0);
-
         document.addEventListener("DOMContentLoaded", () => {
-            // إعادة تأكيد الذهاب لأعلى الصفحة بعد اكتمال العناصر
+            // إعادة تأكيد إجبار التمرير لأعلى بعد تحميل عناصر الـ DOM
             window.scrollTo(0, 0);
 
             const menuToggle = document.getElementById('menuToggle');
@@ -341,7 +344,7 @@
                     lightboxImg.src = imgSrc;
                     lightboxCaption.textContent = captionText || "شاشة من النظام";
                     lightbox.classList.add('active');
-                    document.body.style.overflow = 'hidden'; // منع التمرير في الخلفية
+                    document.body.style.overflow = 'hidden';
                 }
             }
 
@@ -371,7 +374,6 @@
                             </div>
                         `;
 
-                        // ربط حدث الضغط مباشرة على حاوية الصورة لتفتح فورا
                         const imgWrapper = card.querySelector('.img-wrapper');
                         imgWrapper.addEventListener('click', () => {
                             openLightbox(item.fileName, item.title);
@@ -382,7 +384,6 @@
                 }
             }
 
-            // إغلاق النافذة المنبثقة عند الضغط على زر الإغلاق أو الخلفية أو زر Esc
             if(lightboxClose) lightboxClose.addEventListener('click', closeLightboxFunc);
             if(lightbox) {
                 lightbox.addEventListener('click', (e) => {
@@ -393,6 +394,13 @@
                 if(e.key === 'Escape') closeLightboxFunc();
             });
         });
+
+        // تأكيد إضافي بعد اكتمال التحميل الكامل للصور والموارد
+        window.onload = function() {
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 10);
+        };
     </script>
 </body>
 </html>
