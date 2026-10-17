@@ -24,6 +24,24 @@ body {
     color: var(--text-color);
     line-height: 1.7;
     overflow-x: hidden;
+    position: relative;
+}
+
+/* خلفية عالمية مكررة خفيفة لشعار ابكسورة على كامل الصفحة */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('logo.jpg');
+    background-size: 180px 180px;
+    background-repeat: repeat;
+    background-position: center;
+    opacity: 0.015; /* شفافية فائقة النعومة لتُعطي ملمس راقي بدون تشتيت */
+    pointer-events: none;
+    z-index: -2;
 }
 
 a {
@@ -220,6 +238,30 @@ ul {
     position: relative;
     padding: 160px 0 90px;
     overflow: hidden;
+}
+
+/* إضافة شعار ابكسورة كعلامة مائية شفافة وشيك خلف قسم الهيرو */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 650px;
+    height: 650px;
+    background-image: url('logo.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.045; /* شفافية شيك وناعمة جداً (4.5%) */
+    pointer-events: none;
+    z-index: 0;
+    filter: drop-shadow(0 0 30px var(--accent-glow));
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 1;
 }
 
 .hero-glow-1 {
@@ -606,6 +648,11 @@ ul {
     
     .hero-section {
         padding: 130px 0 50px;
+    }
+
+    .hero-section::before {
+        width: 350px;
+        height: 350px;
     }
     
     .stats-grid {
