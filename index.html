@@ -219,7 +219,7 @@
                 <div class="highlight-box">
                     <i class="fas fa-laptop-code"></i>
                     <h3>تطوير هندسي فائق</h3>
-                    <p>مصنوعة بخبرة برمجية دقيقة لتلائم كافة أنشطة المؤسسات الطبية بكفاءة مطلقة.</p>
+                    <p>مصنوعة بخبرة برمجية دقيقة تلائم كافة أنشطة المؤسسات الطبية بكفاءة مطلقة.</p>
                 </div>
             </div>
         </div>
@@ -319,6 +319,29 @@
                 el.setAttribute('target', '_blank');
             });
 
+            // إعدادات نافذة تكبير الصور (Lightbox Elements)
+            const lightbox = document.getElementById('imageLightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxCaption = document.getElementById('lightboxCaption');
+            const lightboxClose = document.getElementById('lightboxClose');
+
+            function openLightbox(imgSrc, captionText) {
+                if(lightbox && lightboxImg) {
+                    lightboxImg.src = imgSrc;
+                    lightboxCaption.textContent = captionText || "شاشة من النظام";
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // منع التمرير في الخلفية
+                }
+            }
+
+            function closeLightboxFunc() {
+                if(lightbox) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+
+            // تعبئة معرض الشاشات ديناميكياً مع ربط حدث النقر المباشر
             if (typeof systemData !== 'undefined') {
                 const previewGrid = document.getElementById('homePreviewGrid');
                 if (previewGrid && systemData.screenshots) {
@@ -326,7 +349,7 @@
                         const card = document.createElement('div');
                         card.className = `screenshot-card ${item.category}`;
                         card.innerHTML = `
-                            <div class="img-wrapper" onclick="openLightbox('${item.fileName}', '${item.title}')">
+                            <div class="img-wrapper">
                                 <img src="${item.fileName}" alt="${item.title}" loading="lazy">
                                 <div class="zoom-overlay-icon"><i class="fas fa-search-plus"></i></div>
                             </div>
@@ -336,32 +359,19 @@
                                 <p>${item.description}</p>
                             </div>
                         `;
+
+                        // ربط حدث الضغط مباشرة على حاوية الصورة لتفتح فورا
+                        const imgWrapper = card.querySelector('.img-wrapper');
+                        imgWrapper.addEventListener('click', () => {
+                            openLightbox(item.fileName, item.title);
+                        });
+
                         previewGrid.appendChild(card);
                     });
                 }
             }
 
-            const lightbox = document.getElementById('imageLightbox');
-            const lightboxImg = document.getElementById('lightboxImg');
-            const lightboxCaption = document.getElementById('lightboxCaption');
-            const lightboxClose = document.getElementById('lightboxClose');
-
-            window.openLightbox = function(imgSrc, captionText) {
-                if(lightbox && lightboxImg) {
-                    lightboxImg.src = imgSrc;
-                    lightboxCaption.textContent = captionTest || "شاشة من النظام";
-                    lightbox.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                }
-            };
-
-            function closeLightboxFunc() {
-                if(lightbox) {
-                    lightbox.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                }
-            }
-
+            // إغلاق النافذة المنبثقة عند الضغط على زر الإغلاق أو الخلفية أو زر Esc
             if(lightboxClose) lightboxClose.addEventListener('click', closeLightboxFunc);
             if(lightbox) {
                 lightbox.addEventListener('click', (e) => {
